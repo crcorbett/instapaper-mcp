@@ -1,0 +1,25 @@
+{
+  "$schema": "./bounded-receipt.schema.json",
+  "schemaVersion": 1,
+  "status": "passed",
+  "invariant": "The clean public root passes the repository's local quality and packaging checks",
+  "target": "public root commit 737b34d31c2b2a9be21eb116a5b7083d567ea5a1",
+  "captureLimitBytes": 1024,
+  "capturedBytes": 300,
+  "truncated": false,
+  "excerpt": "Local checks passed on the sanitised source: formatting, lint, Effect policy, type checks, unused-code checks, tests and builds. Direct packages were current at resolution time, and the audited dependency tree reported no known vulnerabilities. No provider write or Instapaper bookmark change ran.",
+  "details": {
+    "path": null,
+    "sha256": null
+  },
+  "recovery": "Rerun bun install --frozen-lockfile, bun run verification and bun audit on the recorded public root.",
+  "postcondition": "The clean public source, contracts, tests and builds passed their configured local checks.",
+  "limitations": [
+    "Local verification does not prove the current source is deployed.",
+    "Local verification does not authenticate to Cloudflare or Instapaper."
+  ],
+  "nonClaims": [
+    "This does not prove provider state or an authenticated hosted journey.",
+    "No Instapaper bookmark was saved or changed."
+  ]
+}

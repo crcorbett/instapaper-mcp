@@ -1,0 +1,29 @@
+{
+  "$schema": "./proof-packet.schema.json",
+  "schemaVersion": 1,
+  "claim": "The sanitised Instapaper client, MCP Worker and private plugin pass the repository's local checks on the clean public root.",
+  "artifact": {
+    "identity": "git archive of public root commit 737b34d31c2b2a9be21eb116a5b7083d567ea5a1",
+    "sha256": "a73a506ab6544481e2a691130f1e5fc668de6701b098a3197b76a53d47cdc1a2"
+  },
+  "boundary": "Local Bun 1.4.0 repository verification on macOS, with no provider credentials loaded.",
+  "journeys": ["MCP-CANDIDATE-CHECK", "MCP-APPROVED-SAVE"],
+  "receipts": [
+    {
+      "path": "docs/proof/local-verification.receipt.json",
+      "sha256": "b492f15b8cdcbe72cc631edad44f43a810812e66fd7dfe247d0ed836dda2e7e4"
+    }
+  ],
+  "risks": [
+    "Instapaper's folder limit may block complete duplicate checks for a large library.",
+    "Hosted publisher extraction can still fail on paywalls, archive controls or bot checks."
+  ],
+  "limitations": [
+    "This local packet does not prove the separate hosted deployment or authenticated MCP connection."
+  ],
+  "nonClaims": [
+    "This local packet makes no claim about current provider state.",
+    "No Instapaper bookmark was saved or changed."
+  ],
+  "rollback": "Revert the public proof commit or restore the verified private recovery bundle outside the repository if the removed private history is required for authorised recovery."
+}
