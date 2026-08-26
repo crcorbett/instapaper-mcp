@@ -7,7 +7,6 @@ import hashlib
 import json
 import os
 import re
-import stat
 import subprocess
 import sys
 from pathlib import Path
@@ -50,7 +49,6 @@ def skill_tree_receipt(skill_root: Path, excluded: tuple[str, ...]) -> dict[str,
         elif path.is_file():
             entries[key] = {
                 "kind": "file",
-                "mode": stat.S_IMODE(path.stat().st_mode),
                 "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
             }
         elif not path.is_dir():
