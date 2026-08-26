@@ -1,12 +1,19 @@
 ---
 name: instapaper-article-save
-description: Discover, inspect, clean, check, and save newspaper or magazine articles through Cooper's hosted Instapaper MCP. Use when the user wants recent reading candidates, duplicate checks, approval-only saves, source and length tags, or reusable source-specific discovery notes.
+description: Discover, inspect, clean, check, and save newspaper or magazine articles through Executor Personal's Instapaper connection. Use when the user wants recent reading candidates, duplicate checks, approval-only saves, source and length tags, or reusable source-specific discovery notes.
 ---
 
 # Instapaper Article Save
 
-This skill uses the hosted MCP at `https://instapaper.coopercorbett.com/mcp`.
-It has one current Instapaper path:
+This skill has one current Instapaper path: Executor Personal's MCP and its
+`instapaper` connection. The hosted Worker remains behind Executor and owns all
+Instapaper credentials.
+
+Use the Executor Personal tools whose names start with
+`mcp__executor_personal__`. Do not use the separate Codex Apps Executor tool or
+connect to the hosted Worker directly.
+
+The current Instapaper operations are:
 
 - `instapaper_access_check` confirms read-only access.
 - `instapaper_check_candidates` checks proposed items against unread, starred,
@@ -14,9 +21,32 @@ It has one current Instapaper path:
 - `instapaper_save_approved` saves one exact, approved article through the Full
   API and verifies it by reading the saved text back.
 
-Do not use local scripts, environment files, 1Password, Doppler, direct
-Instapaper requests, or interactive credential prompts. The hosted Worker owns
-all Instapaper credentials.
+Do not use local scripts, environment files, 1Password, Doppler, direct Worker
+or Instapaper requests, or interactive credential prompts.
+
+## Executor Personal route
+
+Before the first Instapaper call in a run:
+
+1. Call `mcp__executor_personal__skills` with `{ "name": "execute" }` and follow
+   its current instructions.
+2. Use `mcp__executor_personal__execute` to call
+   `tools.executor.coreTools.connections.list({})`. Require one healthy
+   `instapaper` connection. The connection observed on 2026-08-26 was
+   `tools.instapaper.user.personalInstapaper`; treat this as a checked example,
+   not a reason to skip live discovery.
+3. Inside Executor, use `tools.search({ namespace: "instapaper", ... })` to find
+   the required operation and `tools.describe.tool({ path })` to confirm its
+   input. Call the full path returned by discovery through `tools[path](input)`.
+   Do not guess a path or enumerate the lazy `tools` object.
+4. Branch on Executor's outer `{ ok, data }` result. An outer `ok: true` means
+   Executor reached the MCP tool; it does not by itself prove that a duplicate
+   check or save succeeded. Inspect the Instapaper tool's structured result and
+   its `status`.
+
+Keep raw MCP content inside Executor. Return only the minimum fields needed for
+the shortlist, duplicate decision, or verified receipt. Never emit credentials,
+OAuth data, provider responses, or article HTML.
 
 ## Core workflow
 
@@ -30,6 +60,9 @@ all Instapaper credentials.
 5. Call `instapaper_check_candidates` before recommending or saving. Exclude all
    URL, saved-URL, title, and archive-backed matches.
 6. Present an approval-only shortlist. Do not save while approval is pending.
+   A direct instruction to choose and save exactly N items within stated
+   constraints delegates selection for that one run. Lock the exact N titles
+   and URLs after duplicate checking and do not save any extra item.
 7. For each approved article, obtain complete, marker-free article HTML. Count
    words from the exact cleaned content that will be submitted.
 8. Call `instapaper_save_approved` once per approved article with:
@@ -83,7 +116,8 @@ work around a duplicate by changing the URL or title.
 ## Approval and save safety
 
 `instapaper_save_approved` is the only write tool. Use it only after Cooper
-explicitly approves the exact article. One call saves one article.
+explicitly approves the exact article, or explicitly delegates choosing and
+saving an exact count within clear constraints. One call saves one article.
 
 Before each call:
 

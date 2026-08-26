@@ -1,7 +1,9 @@
 # Instapaper Article Save plugin
 
-This private plugin is the sole Instapaper route for Cooper's reading workflow.
-Its remote MCP is `https://instapaper.coopercorbett.com/mcp`. Cloudflare OAuth
-asks Cooper to sign in on first connection. The Worker can check Instapaper
-without writing; its save tool requires explicit approval for each article and
-verifies every successful save by reading it back.
+This plugin holds Cooper's Instapaper reading workflow. It uses the installed
+Executor Personal MCP and its `instapaper` connection. Executor calls the
+hosted Worker, which owns the Instapaper credentials.
+
+The Worker can check Instapaper without writing. Its save tool requires explicit
+approval for each article and verifies every successful save by reading it back.
+The plugin does not add a second, direct MCP connection.

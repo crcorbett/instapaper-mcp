@@ -1,6 +1,8 @@
-# Hosted Instapaper MCP notes
+# Instapaper service notes
 
-The hosted MCP is the only supported Instapaper path for this skill.
+Executor Personal's `instapaper` connection is the only supported access path
+for this skill. It calls the hosted Worker without exposing the Worker's URL or
+credentials to the reading workflow.
 
 ## Tools
 
@@ -55,8 +57,8 @@ route and do not delete or re-add the bookmark.
 
 Cloudflare Worker secrets contain the Instapaper consumer key, consumer secret,
 access token, and access-token secret. The plugin, skill, Executor task, and
-browser never receive those values. Do not look for local credentials or use a
-secret manager as a relay.
+browser never receive those values. Do not look for local credentials, connect
+to the Worker directly, or use a secret manager as a relay.
 
 Instapaper xAuth remains a one-time maintainer operation for issuing the
 persistent token stored by the Worker. It is not part of a reading run.

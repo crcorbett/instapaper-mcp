@@ -1,6 +1,6 @@
 {
   "name": "instapaper-article-save",
-  "version": "0.1.0+codex.20260825091131",
+  "version": "0.2.0",
   "description": "Private Instapaper discovery, duplicate checking and approval-only saving.",
   "author": {
     "name": "Cooper Corbett"
@@ -9,11 +9,10 @@
   "interface": {
     "displayName": "Instapaper Article Save",
     "shortDescription": "Find and safely save deep reads.",
-    "longDescription": "Bundles Cooper's source-specific reading workflow and a private remote MCP for duplicate checks and approval-only, readback-verified Instapaper saves.",
+    "longDescription": "Bundles Cooper's source-specific reading workflow and uses Executor Personal for duplicate checks and approval-only, readback-verified Instapaper saves.",
     "developerName": "Cooper Corbett",
     "category": "Productivity",
     "capabilities": ["Research", "Read", "Write"],
     "defaultPrompt": "Find this week's best unsaved essays and wait for my approval before saving."
-  },
-  "mcpServers": "./.mcp.json"
+  }
 }
