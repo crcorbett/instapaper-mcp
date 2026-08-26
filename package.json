@@ -1,0 +1,88 @@
+{
+  "name": "instapaper",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "catalogs": {
+      "effect": {
+        "effect": "4.0.0-rc.112",
+        "@effect/vitest": "4.0.0-rc.112",
+        "@effect/platform-bun": "4.0.0-rc.112",
+        "@effect/platform-node": "4.0.0-rc.112"
+      },
+      "tanstack": {
+        "@tanstack/react-start": "1.168.49",
+        "@tanstack/react-router": "1.170.32"
+      },
+      "react": {
+        "react": "19.2.8",
+        "react-dom": "19.2.8",
+        "@types/react": "19.2.18",
+        "@types/react-dom": "19.2.5"
+      },
+      "typescript": {
+        "typescript": "7.0.2"
+      },
+      "testing": {
+        "vitest": "4.1.11"
+      },
+      "build": {
+        "vite": "8.2.2",
+        "@vitejs/plugin-react": "6.1.0"
+      },
+      "infrastructure": {
+        "alchemy": "2.0.0-beta.74"
+      }
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "turbo run dev",
+    "format:check": "oxfmt --check .",
+    "format": "oxfmt .",
+    "lint": "oxlint .",
+    "test:lint-rules": "bun test tools/oxlint/policy.test.ts",
+    "validate:harness-profile": "python3 tools/governance/validate_audit_artifacts.py --profile docs/governance/harness-profile.json",
+    "validate:governance": "python3 tools/governance/validate.py .",
+    "check-types": "tsc --noEmit -p tsconfig.infrastructure.json && turbo run check-types",
+    "test": "turbo run test",
+    "build": "turbo run build",
+    "knip": "knip",
+    "knip:production": "knip --production --config knip.production.ts --strict",
+    "changeset": "changeset",
+    "changeset:status": "changeset status",
+    "infra:plan": "alchemy plan alchemy.run.ts",
+    "infra:deploy": "alchemy deploy alchemy.run.ts",
+    "auth:bootstrap": "bun tools/bootstrap-instapaper-oauth.ts",
+    "verification": "bun run validate:governance && bun run format:check && bun run lint && bun run test:lint-rules && bun run check-types && bun run knip && bun run knip:production && bun run test && bun run build"
+  },
+  "dependencies": {
+    "@effect/platform-bun": "catalog:effect",
+    "@effect/platform-node": "catalog:effect",
+    "alchemy": "catalog:infrastructure",
+    "effect": "catalog:effect"
+  },
+  "devDependencies": {
+    "@changesets/cli": "3.0.1",
+    "@types/bun": "1.4.0",
+    "knip": "6.32.2",
+    "oxfmt": "0.65.0",
+    "oxlint": "1.80.0",
+    "turbo": "2.10.12",
+    "typescript": "catalog:typescript",
+    "vitest": "catalog:testing"
+  },
+  "overrides": {
+    "@hono/node-server": "1.19.15",
+    "hono": "4.12.34",
+    "lodash": "4.18.0",
+    "valibot": "1.4.2"
+  },
+  "engines": {
+    "bun": ">=1.4.0"
+  },
+  "packageManager": "bun@1.4.0"
+}

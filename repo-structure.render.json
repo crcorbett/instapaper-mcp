@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "phase": "bootstrapped",
+  "name": "instapaper",
+  "scope": "@instapaper",
+  "sourceCondition": "@instapaper/source",
+  "versionSnapshot": {
+    "resolvedAt": "2026-08-26",
+    "sha256": "9bd92aee13d7df4e9afcc28d711876028695892696251c69ed03cbe5805e78bf"
+  },
+  "officialSources": {
+    "npmRegistry": "https://registry.npmjs.org/",
+    "effect": "https://www.npmjs.com/package/effect",
+    "tanstackStart": "https://www.npmjs.com/package/@tanstack/react-start",
+    "alchemy": "https://www.npmjs.com/package/alchemy",
+    "alchemyCloudflare": "https://v2.alchemy.run/cloudflare/",
+    "cloudflareWorkers": "https://developers.cloudflare.com/workers/"
+  },
+  "selectedVersions": {
+    "effect": "4.0.0-rc.112",
+    "@effect/platform-bun": "4.0.0-rc.112",
+    "@effect/platform-node": "4.0.0-rc.112",
+    "@effect/vitest": "4.0.0-rc.112",
+    "@tanstack/react-start": "1.168.49",
+    "@tanstack/react-router": "1.170.32",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "4.1.11",
+    "turbo": "2.10.12",
+    "oxlint": "1.80.0",
+    "oxfmt": "0.65.0",
+    "knip": "6.32.2",
+    "bun": "1.4.0",
+    "@changesets/cli": "3.0.1",
+    "@types/bun": "1.4.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
+    "@vitejs/plugin-react": "6.1.0",
+    "alchemy": "2.0.0-beta.74"
+  },
+  "compatibilityDecisions": [
+    {
+      "id": "effect-ecosystem",
+      "status": "qualified",
+      "decision": "Select one exact Effect v4 release candidate across the Effect packages.",
+      "evidence": "The repository passed install, lint policy, type checking, tests, and build with Effect rc.112."
+    },
+    {
+      "id": "tanstack-start",
+      "status": "qualified",
+      "decision": "Select Start and Router independently.",
+      "evidence": "The rendered TanStack app passed type checking, tests, and both client and server builds."
+    },
+    {
+      "id": "alchemy-cloudflare",
+      "status": "qualified",
+      "decision": "Select the newest Alchemy beta that remains compatible with Effect rc.112.",
+      "evidence": "Alchemy beta.74 and the preview-only Cloudflare scaffold passed infrastructure type checking and build; no provider deployment is implied."
+    }
+  ],
+  "skillBaseline": {
+    "skills": {
+      "docs-maintainer": {
+        "entryCount": 18,
+        "treeDigest": "8a15396c01767a1326df2458a438c53fe02485595b9a54c28f7109938656aa62"
+      },
+      "effect-client-wrapper": {
+        "entryCount": 2,
+        "treeDigest": "12b2550b49572248fd04723a2666c8e78abc77989e02b25cbb0145ac11f4263a"
+      },
+      "package-structure": {
+        "entryCount": 50,
+        "treeDigest": "523cf4666a02621c699d12bcb35e91c54aafd86147be89349526f324599c9b11"
+      },
+      "prd-implementer": {
+        "entryCount": 2,
+        "treeDigest": "355c6be2e6a6fbf2bfdf215e91a03b7e828052c8ce63c6c900b619983197e9a2"
+      },
+      "prd-review": {
+        "entryCount": 2,
+        "treeDigest": "b334bbd7740efcd9ba70df15897418f94b88ff04e4c6c86a2b4f206c7113084a"
+      },
+      "prd-writer": {
+        "entryCount": 2,
+        "treeDigest": "b99899a9e199e3bdf7fc45c066be76203c8dd795d0929e112b432f0e359dd838"
+      }
+    },
+    "generatedOverlays": [
+      ".agents/skills/docs-maintainer/references/repository-profile.md",
+      ".agents/skills/package-structure/references/repository-profile.md"
+    ],
+    "claudeLinks": {
+      "docs-maintainer": "../../.agents/skills/docs-maintainer",
+      "effect-client-wrapper": "../../.agents/skills/effect-client-wrapper",
+      "package-structure": "../../.agents/skills/package-structure",
+      "prd-implementer": "../../.agents/skills/prd-implementer",
+      "prd-review": "../../.agents/skills/prd-review",
+      "prd-writer": "../../.agents/skills/prd-writer"
+    }
+  },
+  "configDigests": {
+    "package.json": "9bd92aee13d7df4e9afcc28d711876028695892696251c69ed03cbe5805e78bf",
+    "tsconfig.base.json": "405b0f91ecc2567a0023d5b42c48643adaf4f2c842ecb8716bcffd459cc3accf",
+    "tsconfig.infrastructure.json": "f5dad1f46e435bdcbd27506966f0c0fdbbd9c86d2803185f11e9436da04a66bd",
+    "turbo.json": "f4fea8105932e3018d64927e2f837560a3b801c1ec9bf315e01deb127c5576ff",
+    "oxlint.config.ts": "a1bf737b5b65de7e769fe267228c999957a289cded4fdc50805fc000f5f6cb2e",
+    "oxfmt.config.ts": "1a2b8eb761779f75e164708cd4c050a68c411b0d607e2822b78068f58549aff6",
+    "vitest.config.ts": "e2d82ea95f62b4445f5738c567596ac2df83e1d3088b0c6d5c9bcc89cbb213bc",
+    "knip.ts": "a66f7ae14b19078972e100cf189e36d6c8dd4aeb27eed1e372760a7421544fee",
+    "alchemy.run.ts": "1f0e9ac1684aa67611862c4563ac730ed7ece011f1fd0fcb38f380afd1c03a7d",
+    "docs/governance/harness-profile.json": "f8d0e7e0de98bf88d3af8f819492fd81b212b326ad00c44adfd2b9bc673e61b5",
+    "tools/governance/validate_audit_artifacts.py": "bb6d416fc120d5755857c310214cb65ea619d5fd33b72e9268570e8942dda936",
+    "tools/governance/finalize_repository_receipt.py": "8dbf8bd310afb236571234cc7eaac1bfd88207ee67b8f0bebcfcc3d211528488"
+  },
+  "lockfile": {
+    "path": "bun.lock",
+    "sha256": "c0ded8baa7f86f18f475dcc601a942c0c9cf50bf57d27ff7582aada33b0c684d",
+    "status": "generated",
+    "owner": "bun install"
+  },
+  "limitations": [
+    "Rendering proves template structure only; install, typecheck, tests, build, and provider behavior require separate receipts.",
+    "The package manifest, infrastructure TypeScript config, Alchemy graph, harness profile and lockfile digests were explicitly adopted after adding the Instapaper MCP product slice and removing its retired local and Access-replacement commands."
+  ],
+  "nonClaims": [
+    "Selected versions are not claimed to remain latest.",
+    "No Cloudflare resource was planned, deployed, or read back."
+  ]
+}

@@ -1,0 +1,11 @@
+node_modules
+.env
+.env.*
+!.env.example
+.alchemy/
+dist
+.output
+.turbo
+routeTree.gen.ts
+*.tsbuildinfo
+*.log

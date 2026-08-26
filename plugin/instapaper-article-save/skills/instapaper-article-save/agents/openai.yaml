@@ -1,0 +1,11 @@
+interface:
+  display_name: "Instapaper Article Save"
+  short_description: "Find and safely save verified articles"
+  default_prompt: "Use $instapaper-article-save to find unsaved articles, wait for my approval, then save and verify only the approved items."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "instapaper"
+      description: "Hosted duplicate checks and approval-only Instapaper saves"
+      transport: "streamable_http"
+      url: "https://instapaper.coopercorbett.com/mcp"

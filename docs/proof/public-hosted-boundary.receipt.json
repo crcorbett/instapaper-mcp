@@ -1,0 +1,25 @@
+{
+  "$schema": "./bounded-receipt.schema.json",
+  "schemaVersion": 1,
+  "status": "passed",
+  "invariant": "The public service routes expose only the intended public pages, health response and OAuth discovery metadata",
+  "target": "https://instapaper.coopercorbett.com",
+  "captureLimitBytes": 1024,
+  "capturedBytes": 260,
+  "truncated": false,
+  "excerpt": "Read-only public checks returned 200 for the home page, privacy notice, health route and both OAuth discovery routes. An unauthenticated request to the MCP route returned 401. No account, policy, Worker, storage, zone, deployment or secret-store identifiers were retained.",
+  "details": {
+    "path": null,
+    "sha256": null
+  },
+  "recovery": "If a public route fails, inspect the provider privately and restore the last verified configuration through the approved deployment process.",
+  "postcondition": "The public pages and discovery routes are reachable, while the MCP route still requires authentication.",
+  "limitations": [
+    "This public receipt deliberately omits private provider identities, deployment timing and account details.",
+    "The check did not authenticate to MCP or call Instapaper."
+  ],
+  "nonClaims": [
+    "This does not prove that the current repository working tree is deployed.",
+    "No Instapaper bookmark was saved or changed."
+  ]
+}

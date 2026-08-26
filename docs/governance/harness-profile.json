@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1",
+  "repository": "instapaper",
+  "purpose": "Private Cloudflare MCP for scheduled Instapaper duplicate checks and approval-only, readback-verified saves.",
+  "lifecyclePhase": "bootstrapped_under_development",
+  "identitySource": "git rev-parse HEAD, git status --short --branch, and repo-structure.render.json",
+  "owners": {
+    "docsRouter": "docs/README.md",
+    "architecture": ["ARCHITECTURE.md", "docs/architecture/"],
+    "standards": ["docs/standards/"],
+    "readmes": ["README.md", "apps/**/README.md", "packages/**/README.md"],
+    "generatedReference": ["docs/documentation-map.json", "repo-structure.render.json"],
+    "runbooks": ["docs/runbooks/"],
+    "proof": ["docs/proof/"],
+    "evidence": ["docs/evidence/"],
+    "activeSpecs": ["docs/product-specs/"],
+    "activePlans": ["docs/exec-plans/active/"],
+    "archives": ["docs/exec-plans/completed/", "docs/evidence/failed/"],
+    "skills": [".agents/skills/"],
+    "agentGuidance": ["AGENTS.md"]
+  },
+  "commands": {
+    "documentation": ["python3 tools/governance/validate.py ."],
+    "skills": ["python3 tools/governance/validate.py ."],
+    "focused": ["bun run test:lint-rules", "bun run check-types", "bun run test", "bun run build"],
+    "closeout": ["bun run verification"]
+  },
+  "representativeJobs": [
+    {
+      "id": "WEB-HOME",
+      "consumer": "Browser user",
+      "acceptedOutcome": "The home route renders without a fatal error.",
+      "owningPaths": ["apps/web/", "docs/critical-journeys/journeys.json"]
+    },
+    {
+      "id": "HTTP-ITEM-LIST",
+      "consumer": "HTTP API consumer",
+      "acceptedOutcome": "The HTTP boundary returns a Schema-decoded domain item list.",
+      "owningPaths": ["packages/http-api/", "packages/domain/"]
+    },
+    {
+      "id": "RPC-ITEM-LIST",
+      "consumer": "RPC consumer",
+      "acceptedOutcome": "The RPC client invokes the schema-owned operation through its handler Layer.",
+      "owningPaths": ["packages/rpc/", "packages/domain/"]
+    },
+    {
+      "id": "MCP-CANDIDATE-CHECK",
+      "consumer": "Scheduled Codex Work task",
+      "acceptedOutcome": "Candidate URLs and titles are checked against unread, starred and archived Instapaper bookmarks without a write.",
+      "owningPaths": ["apps/mcp/", "packages/instapaper-client/"]
+    },
+    {
+      "id": "MCP-APPROVED-SAVE",
+      "consumer": "Cooper through an interactive Codex task",
+      "acceptedOutcome": "One approved article is saved through the Full API and reported successful only after readback passes.",
+      "owningPaths": ["apps/mcp/", "packages/instapaper-client/", "docs/governance/authority.md"]
+    }
+  ],
+  "criticalJourneyOwner": "docs/critical-journeys/journeys.json",
+  "boundaryFacts": [
+    "Browser runtime uses Fetch while server loaders use the in-process HTTP client.",
+    "Effect execution and runtime composition are application-owned.",
+    "The MCP/OAuth fetch handler is a third-party host adapter; Instapaper policy and outbound HTTP remain Effect-owned.",
+    "Alchemy and Cloudflare state requires approved provider readback; repository configuration owns desired state only."
+  ],
+  "exclusions": [
+    "Dependencies, generated build output, caches, binaries, vendored files, and inaccessible external systems."
+  ],
+  "nonClaims": [
+    "The repository is bootstrapped locally but the product implementation remains under development.",
+    "Local verification does not prove preview, production, provider, release, deployment, or publication behavior."
+  ],
+  "exceptions": []
+}

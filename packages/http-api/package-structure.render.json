@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "kind": "http-api",
+  "packageName": "@instapaper/http-api",
+  "domainPackage": "@instapaper/domain",
+  "sourceCondition": "@instapaper/source",
+  "versionSnapshot": {
+    "resolvedAt": "2026-08-26",
+    "sha256": "9bd92aee13d7df4e9afcc28d711876028695892696251c69ed03cbe5805e78bf"
+  },
+  "officialSources": {
+    "npmRegistry": "https://registry.npmjs.org/",
+    "effect": "https://www.npmjs.com/package/effect",
+    "tanstackStart": "https://www.npmjs.com/package/@tanstack/react-start",
+    "alchemy": "https://www.npmjs.com/package/alchemy",
+    "alchemyCloudflare": "https://v2.alchemy.run/cloudflare/",
+    "cloudflareWorkers": "https://developers.cloudflare.com/workers/"
+  },
+  "selectedVersions": {
+    "effect": "4.0.0-rc.112",
+    "@effect/platform-bun": "4.0.0-rc.112",
+    "@effect/platform-node": "4.0.0-rc.112",
+    "@effect/vitest": "4.0.0-rc.112",
+    "@tanstack/react-start": "1.168.49",
+    "@tanstack/react-router": "1.170.32",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "4.1.11",
+    "turbo": "2.10.12",
+    "oxlint": "1.80.0",
+    "oxfmt": "0.65.0",
+    "knip": "6.32.2",
+    "bun": "1.4.0",
+    "@changesets/cli": "3.0.1",
+    "@types/bun": "1.4.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
+    "@vitejs/plugin-react": "6.1.0",
+    "alchemy": "2.0.0-beta.74"
+  },
+  "compatibilityDecisions": [
+    {
+      "id": "effect-ecosystem",
+      "status": "qualified",
+      "decision": "Select one exact Effect v4 release candidate across the Effect packages.",
+      "evidence": "The repository passed install, lint policy, type checking, tests, and build with Effect rc.112."
+    },
+    {
+      "id": "tanstack-start",
+      "status": "qualified",
+      "decision": "Select Start and Router independently.",
+      "evidence": "The rendered TanStack app passed type checking, tests, and both client and server builds."
+    },
+    {
+      "id": "alchemy-cloudflare",
+      "status": "qualified",
+      "decision": "Select the newest Alchemy beta that remains compatible with Effect rc.112.",
+      "evidence": "Alchemy beta.74 and the preview-only Cloudflare scaffold passed infrastructure type checking and build; no provider deployment is implied."
+    }
+  ],
+  "configDigests": {
+    "package.json": "ac17219a36e16ccbad5f88048382218db7ab377e191cba3d824e5891feca5f3c",
+    "tsconfig.json": "6bdcac503cb448d09111179375ee77e89f7e6524aee65ef7ee8011f5aed4cd19",
+    "tsconfig.build.json": "87286e25b0e313da3a15e0f064cc0a4ea7d97c88ba01971c0e679a152c0fd926",
+    "vitest.config.ts": "0be6a110349188c59f6651c3e6cc19543b37c18cb1d8b9c4d40666709122798e"
+  },
+  "limitations": [
+    "Structural rendering does not prove installed dependency, declaration, runtime, or packed-consumer behavior."
+  ],
+  "nonClaims": ["Selected versions are not claimed to remain latest."]
+}

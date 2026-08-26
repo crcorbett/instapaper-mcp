@@ -1,0 +1,30 @@
+{
+  "$schema": "./proof-packet.schema.json",
+  "schemaVersion": 1,
+  "claim": "The public service pages, health route and OAuth discovery routes are reachable, while an unauthenticated MCP request is rejected.",
+  "artifact": {
+    "identity": "sanitised public hosted-boundary receipt",
+    "sha256": "b7143f1485d98e39349ca1a74dfc2255e6041f2f2da0e7d24b5c1103afeb697f"
+  },
+  "boundary": "Read-only public HTTP checks against the published service domain; private provider readback is deliberately kept outside the repository.",
+  "journeys": ["MCP-GOOGLE-AUTH"],
+  "receipts": [
+    {
+      "path": "docs/proof/public-hosted-boundary.receipt.json",
+      "sha256": "b7143f1485d98e39349ca1a74dfc2255e6041f2f2da0e7d24b5c1103afeb697f"
+    }
+  ],
+  "risks": [
+    "A future identity, DNS or secret change may stop authentication even when the public health route remains available."
+  ],
+  "limitations": [
+    "Private account, application, policy, Worker, storage, zone, deployment and secret-store details are excluded from this public repository.",
+    "Authenticated MCP and Instapaper readback evidence is retained only in the private operator system."
+  ],
+  "nonClaims": [
+    "This packet does not claim that the current repository working tree is deployed.",
+    "This packet does not prove authenticated MCP or Instapaper access.",
+    "No Instapaper bookmark was saved or changed."
+  ],
+  "rollback": "Use the private operator record to restore the last verified provider configuration, revoke affected grants and rotate affected secrets if required."
+}

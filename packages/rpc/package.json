@@ -1,0 +1,72 @@
+{
+  "name": "@instapaper/rpc",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./group": {
+      "@instapaper/source": "./src/group.ts",
+      "types": "./dist/group.d.ts",
+      "default": "./dist/group.js"
+    },
+    "./handlers": {
+      "@instapaper/source": "./src/handlers.ts",
+      "types": "./dist/handlers.d.ts",
+      "default": "./dist/handlers.js"
+    },
+    "./service": {
+      "@instapaper/source": "./src/service.ts",
+      "types": "./dist/service.d.ts",
+      "default": "./dist/service.js"
+    },
+    "./server": {
+      "@instapaper/source": "./src/server.ts",
+      "types": "./dist/server.d.ts",
+      "default": "./dist/server.js"
+    },
+    "./live": {
+      "@instapaper/source": "./src/live.layer.ts",
+      "types": "./dist/live.layer.d.ts",
+      "default": "./dist/live.layer.js"
+    },
+    "./test": {
+      "@instapaper/source": "./src/test.layer.ts",
+      "types": "./dist/test.layer.d.ts",
+      "default": "./dist/test.layer.js"
+    }
+  },
+  "publishConfig": {
+    "exports": {
+      "./group": {
+        "types": "./dist/group.d.ts",
+        "default": "./dist/group.js"
+      },
+      "./service": {
+        "types": "./dist/service.d.ts",
+        "default": "./dist/service.js"
+      },
+      "./server": {
+        "types": "./dist/server.d.ts",
+        "default": "./dist/server.js"
+      },
+      "./live": {
+        "types": "./dist/live.layer.d.ts",
+        "default": "./dist/live.layer.js"
+      }
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "check-types": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@instapaper/domain": "workspace:*",
+    "effect": "4.0.0-rc.112"
+  },
+  "devDependencies": {
+    "@effect/vitest": "4.0.0-rc.112",
+    "typescript": "7.0.2",
+    "vitest": "4.1.11"
+  }
+}

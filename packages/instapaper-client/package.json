@@ -1,0 +1,76 @@
+{
+  "name": "@instapaper/client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./schemas": {
+      "@instapaper/source": "./src/schemas.ts",
+      "types": "./dist/schemas.d.ts",
+      "default": "./dist/schemas.js"
+    },
+    "./errors": {
+      "@instapaper/source": "./src/errors.ts",
+      "types": "./dist/errors.d.ts",
+      "default": "./dist/errors.js"
+    },
+    "./service": {
+      "@instapaper/source": "./src/service.ts",
+      "types": "./dist/service.d.ts",
+      "default": "./dist/service.js"
+    },
+    "./live": {
+      "@instapaper/source": "./src/live.layer.ts",
+      "types": "./dist/live.layer.d.ts",
+      "default": "./dist/live.layer.js"
+    },
+    "./test": {
+      "@instapaper/source": "./src/test.layer.ts",
+      "types": "./dist/test.layer.d.ts",
+      "default": "./dist/test.layer.js"
+    },
+    "./testing/fixtures": {
+      "@instapaper/source": "./src/__testing__/fixtures.ts",
+      "types": "./dist/__testing__/fixtures.d.ts",
+      "default": "./dist/__testing__/fixtures.js"
+    },
+    "./testing/observations": {
+      "@instapaper/source": "./src/__testing__/observations.ts",
+      "types": "./dist/__testing__/observations.d.ts",
+      "default": "./dist/__testing__/observations.js"
+    }
+  },
+  "publishConfig": {
+    "exports": {
+      "./schemas": {
+        "types": "./dist/schemas.d.ts",
+        "default": "./dist/schemas.js"
+      },
+      "./errors": {
+        "types": "./dist/errors.d.ts",
+        "default": "./dist/errors.js"
+      },
+      "./service": {
+        "types": "./dist/service.d.ts",
+        "default": "./dist/service.js"
+      },
+      "./live": {
+        "types": "./dist/live.layer.d.ts",
+        "default": "./dist/live.layer.js"
+      }
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "check-types": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "effect": "4.0.0-rc.112"
+  },
+  "devDependencies": {
+    "@effect/vitest": "4.0.0-rc.112",
+    "typescript": "7.0.2",
+    "vitest": "4.1.11"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "./task-plan.schema.json",
+  "schemaVersion": 1,
+  "tasks": [
+    {
+      "id": "IRM-001",
+      "status": "completed",
+      "owner": "repository maintainers",
+      "claim": "The repository has a tested Effect client for the Instapaper Full API.",
+      "acceptance": [
+        "OAuth 1.0a requests include OAuth and form parameters in the HMAC-SHA1 signature.",
+        "Duplicate, truncation and readback policies fail closed."
+      ],
+      "verification": ["Package type check", "Package unit tests", "Package build"],
+      "proof": ["docs/proof/local-instapaper-mcp.proof.json"],
+      "rollback": ["Remove the package and restore the previous lockfile and workspace manifest."],
+      "maintenance": {
+        "owner": "Effect maintainers",
+        "reviewTrigger": "Instapaper Full API or Effect HTTP API changes",
+        "retireWhen": "Instapaper Full API support is removed"
+      }
+    },
+    {
+      "id": "IRM-002",
+      "status": "completed",
+      "owner": "transport maintainers",
+      "claim": "A stateless authenticated MCP Worker exposes bounded read tools and one approval-only save tool.",
+      "acceptance": [
+        "MCP inputs and outputs use explicit schemas.",
+        "Only the save tool can mutate Instapaper and its annotations disclose the write."
+      ],
+      "verification": ["Worker type check", "MCP contract tests", "Worker bundle"],
+      "proof": ["docs/proof/local-instapaper-mcp.proof.json"],
+      "rollback": ["Disable the MCP route and restore the prior Worker version."],
+      "maintenance": {
+        "owner": "transport maintainers",
+        "reviewTrigger": "MCP SDK, OAuth provider or tool contract changes",
+        "retireWhen": "The remote MCP service is removed"
+      }
+    },
+    {
+      "id": "IRM-003",
+      "status": "completed",
+      "owner": "infrastructure maintainers",
+      "claim": "Alchemy owns the staged Cloudflare Worker, OAuth KV namespace and production Google Access login method without exposing clear secrets in source, command output or evidence.",
+      "acceptance": [
+        "Plan scope matches the approved stage and resource set.",
+        "Apply is followed by provider readback and a fresh Google-authenticated read-only Instapaper check.",
+        "The existing Access application and its exact-email policy are preserved and allow only the configured account owner.",
+        "The Google app is In production with live public home and privacy pages and no sensitive or restricted scopes."
+      ],
+      "verification": ["Infrastructure type check", "Alchemy plan", "Cloudflare provider readback"],
+      "proof": ["docs/proof/production-instapaper-mcp.proof.json"],
+      "rollback": [
+        "Revoke access, restore the last verified Worker version and rotate affected secrets."
+      ],
+      "maintenance": {
+        "owner": "infrastructure maintainers",
+        "reviewTrigger": "Alchemy, Cloudflare bindings, Access policy or secret set changes",
+        "retireWhen": "The Cloudflare service is destroyed with approved evidence"
+      }
+    },
+    {
+      "id": "IRM-004",
+      "status": "completed",
+      "owner": "plugin maintainers",
+      "claim": "The private Codex plugin bundles the reading skill and connects hosted Work to the remote MCP.",
+      "acceptance": [
+        "The full skill and required source notes are inside the plugin.",
+        "The plugin states the hosted-browser limits and never implies local Chrome access."
+      ],
+      "verification": ["Plugin validation", "Skill validation", "Hosted connection smoke test"],
+      "proof": ["docs/proof/production-instapaper-mcp.proof.json"],
+      "rollback": ["Uninstall or disable the plugin and revoke its MCP OAuth grant."],
+      "maintenance": {
+        "owner": "plugin maintainers",
+        "reviewTrigger": "Skill, plugin format or hosted Work capability changes",
+        "retireWhen": "The hosted reading workflow is removed"
+      }
+    }
+  ]
+}

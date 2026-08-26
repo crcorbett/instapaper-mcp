@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "instapaper": {
+      "type": "http",
+      "url": "https://instapaper.coopercorbett.com/mcp",
+      "oauth_resource": "https://instapaper.coopercorbett.com/mcp"
+    }
+  }
+}
