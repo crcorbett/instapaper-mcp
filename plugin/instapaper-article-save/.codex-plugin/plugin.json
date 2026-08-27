@@ -1,11 +1,12 @@
 {
   "name": "instapaper-article-save",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Private Instapaper discovery, duplicate checking and approval-only saving.",
   "author": {
     "name": "Cooper Corbett"
   },
   "skills": "./skills/",
+  "apps": "./.app.json",
   "interface": {
     "displayName": "Instapaper Article Save",
     "shortDescription": "Find and safely save deep reads.",

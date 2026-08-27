@@ -5,13 +5,18 @@ description: Discover, inspect, clean, check, and save newspaper or magazine art
 
 # Instapaper Article Save
 
-This skill has one current Instapaper path: Executor Personal's MCP and its
+This skill has one Instapaper service path: Executor Personal and its
 `instapaper` connection. The hosted Worker remains behind Executor and owns all
 Instapaper credentials.
 
-Use the Executor Personal tools whose names start with
-`mcp__executor_personal__`. Do not use the separate Codex Apps Executor tool or
-connect to the hosted Worker directly.
+Choose the Executor Personal tool names available in the current task:
+
+- In ChatGPT Work and Codex cloud, use the plugin-bundled tools whose names
+  start with `mcp__codex_apps__executor__personal__`.
+- On the local Mac, use the direct MCP tools whose names start with
+  `mcp__executor_personal__`.
+
+Use one route for the whole run. Do not connect to the hosted Worker directly.
 
 The current Instapaper operations are:
 
@@ -28,9 +33,9 @@ or Instapaper requests, or interactive credential prompts.
 
 Before the first Instapaper call in a run:
 
-1. Call `mcp__executor_personal__skills` with `{ "name": "execute" }` and follow
-   its current instructions.
-2. Use `mcp__executor_personal__execute` to call
+1. Call the selected route's `skills` tool with `{ "name": "execute" }` and
+   follow its current instructions.
+2. Use the selected route's `execute` tool to call
    `tools.executor.coreTools.connections.list({})`. Require one healthy
    `instapaper` connection. The connection observed on 2026-08-26 was
    `tools.instapaper.user.personalInstapaper`; treat this as a checked example,
