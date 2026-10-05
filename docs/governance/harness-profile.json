@@ -16,12 +16,12 @@
     "activeSpecs": ["docs/product-specs/"],
     "activePlans": ["docs/exec-plans/active/"],
     "archives": ["docs/exec-plans/completed/", "docs/evidence/failed/"],
-    "skills": [".agents/skills/"],
+    "skills": ["docs/skills.md", "docs/skill-profiles/"],
     "agentGuidance": ["AGENTS.md"]
   },
   "commands": {
     "documentation": ["python3 tools/governance/validate.py ."],
-    "skills": ["python3 tools/governance/validate.py ."],
+    "skills": [],
     "focused": ["bun run test:lint-rules", "bun run check-types", "bun run test", "bun run build"],
     "closeout": ["bun run verification"]
   },

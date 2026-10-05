@@ -47,7 +47,7 @@ bun run verification
 
 The governance validators own the docs registry, harness profile, audit
 artifacts, links, lifecycle, controls, journeys, proof shape, bounded receipts,
-and local skill/reference integrity.
+and documentation links.
 Product/runtime/provider claims additionally require their owning journey or
 runbook receipt.
 
@@ -55,8 +55,7 @@ runbook receipt.
 
 Lifecycle states are `current`, `superseded`, and `archived`. A superseded or
 archived current-looking document requires a reason and successor/tombstone;
-historical proof stays outside default navigation. Repository-local skills are
-the portable source for this repository. `.claude/skills/**` contains only
-validated links to `.agents/skills/**`; it is not a competing copy. Repository
+historical proof stays outside default navigation. Shared development skills come from the latest plugin; follow `docs/skills.md`.
+Repository profiles stay under `docs/skill-profiles/`. Repository
 writes do not authorize deploy, provider, release, publication, or push
 operations.
