@@ -60,46 +60,6 @@
       "evidence": "Alchemy beta.74 and the preview-only Cloudflare scaffold passed infrastructure type checking and build; no provider deployment is implied."
     }
   ],
-  "skillBaseline": {
-    "skills": {
-      "docs-maintainer": {
-        "entryCount": 18,
-        "treeDigest": "99bba403190abc763ebaa7fe8af7453a5fc1486327c895829aa11dc6c6028888"
-      },
-      "effect-client-wrapper": {
-        "entryCount": 2,
-        "treeDigest": "9cdeb1710ca698ab3edf4d311d716e4cd20ef7faaa26a4e281a1d40b09526300"
-      },
-      "package-structure": {
-        "entryCount": 50,
-        "treeDigest": "ce59efa8eae0e97ab71c2a48989d0a7ea0f1846cdfbd5754de9c1339ec017892"
-      },
-      "prd-implementer": {
-        "entryCount": 2,
-        "treeDigest": "e307a747a97ae83c4a74c55ca8c43a9c8f5630be9c27879920e3064478486629"
-      },
-      "prd-review": {
-        "entryCount": 2,
-        "treeDigest": "bed79050eba50e1c56cc12e9f10ce5bea241efd093266a815d2a9870afd326b2"
-      },
-      "prd-writer": {
-        "entryCount": 2,
-        "treeDigest": "d36b957bbd0243014928ae07e17d4c17b23518354f7e1f8f220ce8fbd379da47"
-      }
-    },
-    "generatedOverlays": [
-      ".agents/skills/docs-maintainer/references/repository-profile.md",
-      ".agents/skills/package-structure/references/repository-profile.md"
-    ],
-    "claudeLinks": {
-      "docs-maintainer": "../../.agents/skills/docs-maintainer",
-      "effect-client-wrapper": "../../.agents/skills/effect-client-wrapper",
-      "package-structure": "../../.agents/skills/package-structure",
-      "prd-implementer": "../../.agents/skills/prd-implementer",
-      "prd-review": "../../.agents/skills/prd-review",
-      "prd-writer": "../../.agents/skills/prd-writer"
-    }
-  },
   "configDigests": {
     "package.json": "9bd92aee13d7df4e9afcc28d711876028695892696251c69ed03cbe5805e78bf",
     "tsconfig.base.json": "405b0f91ecc2567a0023d5b42c48643adaf4f2c842ecb8716bcffd459cc3accf",
@@ -110,8 +70,8 @@
     "vitest.config.ts": "e2d82ea95f62b4445f5738c567596ac2df83e1d3088b0c6d5c9bcc89cbb213bc",
     "knip.ts": "a66f7ae14b19078972e100cf189e36d6c8dd4aeb27eed1e372760a7421544fee",
     "alchemy.run.ts": "1f0e9ac1684aa67611862c4563ac730ed7ece011f1fd0fcb38f380afd1c03a7d",
-    "docs/governance/harness-profile.json": "f8d0e7e0de98bf88d3af8f819492fd81b212b326ad00c44adfd2b9bc673e61b5",
-    "tools/governance/validate_audit_artifacts.py": "bb6d416fc120d5755857c310214cb65ea619d5fd33b72e9268570e8942dda936",
+    "docs/governance/harness-profile.json": "9570a5e4098f4a96ace3b0fbf80a87d8ed9d69cd9f0c1dca68f468fa9e98bf9b",
+    "tools/governance/validate_audit_artifacts.py": "aa8e54ddff249a5f6eaabef1ceecc4ecb74ce96b9c991a99b2cbfa8a3ef4179d",
     "tools/governance/finalize_repository_receipt.py": "8dbf8bd310afb236571234cc7eaac1bfd88207ee67b8f0bebcfcc3d211528488"
   },
   "lockfile": {

@@ -311,7 +311,7 @@ def validate_profile(profile: dict[str, Any], target: str) -> None:
     commands = profile["commands"]
     if not isinstance(commands, dict) or set(commands) != {"documentation", "skills", "focused", "closeout"}:
         fail("repository profile declares exact command classes", target, "declare documentation, skills, focused, and closeout commands")
-    if not all(non_empty_list(value) for value in commands.values()):
+    if not all((key == "skills" and value == []) or non_empty_list(value) for key, value in commands.items()):
         fail("repository profile commands are explicit", target, "replace empty command classes with repository-owned commands")
     for field in ("boundaryFacts", "exclusions", "nonClaims"):
         if not non_empty_list(profile[field]):
